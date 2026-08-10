@@ -1,8 +1,25 @@
-import enHymns from '../../public/en-ZA.hymns.json';
-import afHymns from '../../public/af-ZA.hymns.json';
+// Fetch directly from public runtime path to avoid Vite module boundary errors
+let enCache: any = null;
+let afCache: any = null;
 
-export function getHymn(id: number | string, lang: 'en-ZA' | 'af-ZA') {
-  const dataset = lang === 'en-ZA' ? enHymns : afHymns;
+async function loadDataset(lang: 'en-ZA' | 'af-ZA') {
+  if (lang === 'en-ZA' && enCache) return enCache;
+  if (lang === 'af-ZA' && afCache) return afCache;
+
+  const file = lang === 'en-ZA' ? '/en-ZA.hymns.json' : '/af-ZA.hymns.json';
+  const response = await fetch(file);
+  if (!response.ok) {
+    throw new Error(`Failed to load ${file}: ${response.statusText}`);
+  }
+  
+  const data = await response.json();
+  if (lang === 'en-ZA') enCache = data;
+  if (lang === 'af-ZA') afCache = data;
+  return data;
+}
+
+export async function getHymn(id: number | string, lang: 'en-ZA' | 'af-ZA') {
+  const dataset = await loadDataset(lang);
   const targetId = String(id);
   
   const hymn = Array.isArray(dataset) 
