@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHURCH HYMN COMPANION — Projector Output</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #020617; /* Slate-950 */
+      color: #f8fafc; /* Slate-50 */
+      font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 4rem 6rem;
+      overflow: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #1e293b;
+      padding-bottom: 1.5rem;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .hymn-badge {
+      background-color: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    .hymn-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .lines-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      max-width: 90%;
+    }
+    .lyric-line {
+      font-size: 3.25rem;
+      line-height: 1.35;
+      color: #f1f5f9;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #1e293b;
+      padding-top: 1rem;
+      font-size: 1rem;
+      color: #64748b;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .waiting-state {
+      font-size: 2rem;
+      color: #475569;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div id="hymn-badge" class="hymn-badge">CHURCH HYMN COMPANION</div>
+    <div id="hymn-title" class="hymn-title">Projector Window Ready</div>
+  </header>
+
+  <main id="main-content">
+    <div class="waiting-state">Waiting for operator selection...</div>
+  </main>
+
+  <footer>
+    <span id="section-label">SECTION 1 OF 1</span>
+    <span>SOUTH AFRICA • LIVE PROJECTION</span>
+  </footer>
+
+  <script>
+    const channel = new BroadcastChannel('church_projection');
+
+    channel.onmessage = (event) => {
+      const data = event.data;
+      if (!data) return;
+
+      document.getElementById('hymn-badge').textContent = `# HYMN ${data.number} • ${data.language}`;
+      document.getElementById('hymn-title').textContent = data.title;
+      document.getElementById('section-label').textContent = data.label ? data.label.toUpperCase() : 'SECTION';
+
+      const mainContent = document.getElementById('main-content');
+      
+      if (data.lines && data.lines.length > 0) {
+        const linesHtml = data.lines
+          .map(line => `<p class="lyric-line">${line}</p>`)
+          .join('');
+        mainContent.innerHTML = `<div class="lines-container">${linesHtml}</div>`;
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "CHURCH HYMN COMPANION™",
+  "description": "South Africa Mobile & Projector Operator for English & Afrikaans Hymnals",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
