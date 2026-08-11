@@ -1,59 +1,75 @@
-let enData: any = null;
-let afData: any = null;
+// @ts-ignore
+import enDataImport from './en-ZA.hymns.json';
+// @ts-ignore
+import afDataImport from './af-ZA.hymns.json';
 
-// Fetch datasets asynchronously when the module loads
-if (typeof window !== 'undefined') {
-  fetch('/en-ZA.hymns.json')
-    .then((res) => res.json())
-    .then((data) => { enData = data; })
-    .catch((err) => console.error("Failed to load English hymns JSON:", err));
-
-  fetch('/af-ZA.hymns.json')
-    .then((res) => res.json())
-    .then((data) => { afData = data; })
-    .catch((err) => console.error("Failed to load Afrikaans hymns JSON:", err));
-}
+// Manual overrides for known dataset errors in the source JSON files
+const METADATA_OVERRIDES: Record<string, { author?: string; composer?: string }> = {
+  '1': {
+    author: 'St. Francis of Assisi (1182–1226), tr. W. H. Draper',
+    composer: 'Geistliche Kirchengesänge (1623)'
+  }
+};
 
 export const hymnStore = {
   getHymn(id: number | string, lang: 'en-ZA' | 'af-ZA' = 'en-ZA') {
-    const dataset = lang === 'en-ZA' ? enData : afData;
+    const rawImport = lang === 'en-ZA' ? enDataImport : afDataImport;
+    const rawData = (rawImport && (rawImport as any).default) ? (rawImport as any).default : rawImport;
 
-    if (!dataset) {
+    const cleanNum = parseInt(String(id).replace(/\D/g, ''), 10);
+
+    if (isNaN(cleanNum) || !rawData || !Array.isArray(rawData.hymns)) {
       return {
-        id,
-        title: `Hymn ${id}`,
-        verses: ["Loading hymn data..."],
-        author: "Unknown",
-        composer: "Unknown"
-      };
-    }
-
-    const targetId = String(id);
-    const hymn = Array.isArray(dataset)
-      ? dataset.find((h: any) => String(h.id ?? h.number ?? h.hymnNumber) === targetId)
-      : dataset[targetId];
-
-    if (!hymn) {
-      return {
-        id,
-        title: `Hymn ${id} Not Found`,
-        verses: [`Hymn #${id} was not found in the ${lang} dataset.`],
+        id: id || '?',
+        title: `Invalid Query`,
+        verses: ["Invalid hymn number or dataset failed to load."],
         author: "N/A",
         composer: "N/A"
       };
     }
 
-    return {
-      id: hymn.id || hymn.number || id,
-      title: hymn.title || hymn.name || `Hymn ${id}`,
-      verses: hymn.verses || hymn.stanzas || hymn.lyrics || [],
-      author: hymn.author || hymn.lyricist || hymn.text || "Author Unknown",
-      composer: hymn.composer || hymn.music || "Composer Unknown"
-    };
-  },
+    const hymn = rawData.hymns.find((h: any) => h.number === cleanNum);
 
-  get(id: number | string, lang: 'en-ZA' | 'af-ZA' = 'en-ZA') {
-    return this.getHymn(id, lang);
+    if (!hymn) {
+      return {
+        id: cleanNum,
+        title: `Hymn ${cleanNum} Not Found`,
+        verses: [`Hymn #${cleanNum} was not found in the ${lang === 'en-ZA' ? 'English' : 'Afrikaans'} dataset.`],
+        author: "N/A",
+        composer: "N/A"
+      };
+    }
+
+    const validSections = Array.isArray(hymn.sections) 
+      ? hymn.sections.filter((s: any) => {
+          if (Array.isArray(s.lines) && s.lines.length > 0) return true;
+          if (typeof s === 'string' && s.length > 0) return true;
+          return false;
+        })
+      : [];
+
+    const formattedVerses: string[] = validSections.map((section: any) => {
+      if (Array.isArray(section.lines)) {
+        return section.lines.join('\n');
+      }
+      return typeof section === 'string' ? section : '';
+    });
+
+    // Check for explicit metadata overrides first, otherwise fallback to JSON metadata
+    const key = String(cleanNum);
+    const override = METADATA_OVERRIDES[key];
+
+    const author = override?.author || hymn.metadata?.lyricist_author_translator || "Author Unknown";
+    const composer = override?.composer || hymn.metadata?.composer || "Composer Unknown";
+
+    return {
+      id: hymn.number ?? cleanNum,
+      title: hymn.title || `Hymn ${cleanNum}`,
+      verses: formattedVerses.length > 0 ? formattedVerses : ["No verse text available."],
+      sections: validSections,
+      author,
+      composer
+    };
   }
 };
 
