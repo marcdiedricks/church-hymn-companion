@@ -2,11 +2,26 @@ import React from 'react';
 
 export const Header: React.FC = () => {
   const handleOpenProjector = () => {
-    window.open(
+    const useSingleScreenProjector =
+      window.matchMedia('(max-width: 900px)').matches ||
+      window.matchMedia('(pointer: coarse)').matches;
+
+    if (useSingleScreenProjector) {
+      window.location.assign('/projector.html?mode=mobile');
+      return;
+    }
+
+    const projectorWindow = window.open(
       '/projector.html',
       'ChurchProjectorWindow',
       'width=1280,height=720,menubar=no,toolbar=no,location=no,status=no'
     );
+
+    // If a browser blocks the separate projector window, fall back to the
+    // same single-screen projector mode used on mobile devices.
+    if (!projectorWindow) {
+      window.location.assign('/projector.html?mode=mobile');
+    }
   };
 
   return (
