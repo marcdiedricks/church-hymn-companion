@@ -6,11 +6,7 @@
   <meta name="theme-color" content="#000000">
   <title>CHURCH HYMN COMPANION — Projector Output</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html,
     body {
@@ -24,14 +20,15 @@
     body {
       font-family: Georgia, Cambria, "Times New Roman", Times, serif;
       overflow: hidden;
-      touch-action: pan-y;
+      touch-action: manipulation;
       user-select: none;
       -webkit-user-select: none;
     }
 
     #projection-shell {
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
       display: flex;
       flex-direction: column;
       padding: clamp(1rem, 3vw, 3rem) clamp(1.25rem, 5vw, 5rem);
@@ -43,15 +40,16 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding-bottom: clamp(0.75rem, 2vh, 1.25rem);
+      padding-bottom: clamp(0.6rem, 1.8vh, 1.25rem);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     #hymn-number {
       color: #f59e0b;
-      font-size: clamp(1.25rem, 3vw, 2.35rem);
+      font-size: clamp(1.2rem, 3vw, 2.35rem);
       font-weight: 800;
       letter-spacing: 0.02em;
+      white-space: nowrap;
     }
 
     #section-label {
@@ -59,6 +57,7 @@
       font-size: clamp(1rem, 2.4vw, 1.9rem);
       font-weight: 750;
       text-align: right;
+      white-space: nowrap;
     }
 
     #main-content {
@@ -67,28 +66,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow-y: auto;
-      padding: clamp(0.5rem, 2vh, 1.5rem) 0;
-      scrollbar-width: none;
-    }
-
-    #main-content::-webkit-scrollbar {
-      display: none;
+      overflow: hidden;
+      padding: clamp(0.35rem, 1.6vh, 1.25rem) 0;
     }
 
     .lines-container {
-      width: min(96%, 1500px);
+      width: 100%;
+      max-width: 1700px;
       display: flex;
       flex-direction: column;
-      gap: clamp(0.35rem, 1.3vh, 1rem);
+      gap: clamp(0.3rem, 1.15vh, 0.85rem);
       text-align: center;
       margin: auto;
     }
 
     .lyric-line {
       color: #fff;
-      font-size: clamp(2rem, 5.1vw, 4.9rem);
-      line-height: 1.2;
+      font-size: clamp(2rem, 5vw, 5.2rem);
+      line-height: 1.18;
       font-weight: 500;
       text-wrap: balance;
     }
@@ -103,7 +98,7 @@
     #controls {
       position: fixed;
       left: 50%;
-      bottom: max(1rem, env(safe-area-inset-bottom));
+      bottom: max(0.7rem, env(safe-area-inset-bottom));
       transform: translateX(-50%) translateY(12px);
       width: min(calc(100% - 1rem), 820px);
       display: grid;
@@ -117,7 +112,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 160ms ease, transform 160ms ease;
-      z-index: 10;
+      z-index: 20;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
@@ -128,20 +123,16 @@
     }
 
     #controls button {
-      min-height: 3.6rem;
+      min-height: 3.4rem;
       border: 0;
       border-radius: 0.8rem;
       background: #1e293b;
       color: #fff;
       font: inherit;
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      font-size: clamp(0.8rem, 2.3vw, 1rem);
       font-weight: 800;
-      padding: 0.65rem 0.4rem;
+      padding: 0.6rem 0.35rem;
       cursor: pointer;
-    }
-
-    #controls button:active {
-      transform: scale(0.98);
     }
 
     #blank-button {
@@ -149,55 +140,99 @@
       border: 1px solid #475569 !important;
     }
 
-    #exit-button {
-      background: #7f1d1d !important;
+    #exit-button { background: #7f1d1d !important; }
+
+    #presentation-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      place-items: center;
+      padding: 1.25rem;
+      background: #000;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-align: center;
+    }
+
+    #presentation-gate.visible { display: grid; }
+
+    .gate-card {
+      width: min(92vw, 640px);
+      display: grid;
+      gap: 1rem;
+      justify-items: center;
+    }
+
+    .gate-card h1 {
+      color: #fff;
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+    }
+
+    .gate-card p {
+      color: #cbd5e1;
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      line-height: 1.4;
+    }
+
+    #start-presentation-button {
+      width: min(100%, 420px);
+      min-height: 4rem;
+      border: 0;
+      border-radius: 0.9rem;
+      background: #f59e0b;
+      color: #020617;
+      font-size: clamp(1rem, 3.2vw, 1.3rem);
+      font-weight: 900;
+      padding: 0.9rem 1.2rem;
+    }
+
+    #rotate-hint {
+      display: none;
+      color: #fbbf24;
+      font-weight: 800;
     }
 
     body.is-blank #projection-header,
-    body.is-blank #main-content {
-      visibility: hidden;
-    }
+    body.is-blank #main-content { visibility: hidden; }
 
     body.is-blank,
-    body.is-blank #projection-shell {
-      background: #000;
+    body.is-blank #projection-shell { background: #000; }
+
+    @media (max-width: 650px) and (orientation: portrait) {
+      #projection-shell { padding: 1rem; }
+      #controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lyric-line { font-size: clamp(1.8rem, 8vw, 3.4rem); }
+      #rotate-hint { display: block; }
     }
 
-    @media (max-width: 650px) {
+    @media (orientation: landscape) {
       #projection-shell {
-        padding: 1rem 1rem 1.25rem;
+        padding: clamp(0.55rem, 1.8vh, 1.25rem) clamp(1.25rem, 4vw, 4rem);
       }
 
-      #controls {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      #projection-header { padding-bottom: clamp(0.25rem, 1vh, 0.7rem); }
 
-      .lyric-line {
-        font-size: clamp(2rem, 8.4vw, 3.7rem);
-      }
-    }
-
-    @media (orientation: landscape) and (max-height: 650px) {
-      #projection-shell {
-        padding: 0.7rem 2rem;
-      }
-
-      #projection-header {
-        padding-bottom: 0.35rem;
-      }
+      #hymn-number { font-size: clamp(1.1rem, 2.6vw, 2.2rem); }
+      #section-label { font-size: clamp(1rem, 2vw, 1.7rem); }
 
       .lines-container {
-        gap: 0.3rem;
+        width: 100%;
+        max-width: none;
+        gap: clamp(0.18rem, 0.8vh, 0.55rem);
       }
 
       .lyric-line {
-        font-size: clamp(1.7rem, 4.5vw, 3.4rem);
-        line-height: 1.12;
+        font-size: clamp(1.6rem, 4.7vw, 4.8rem);
+        line-height: 1.1;
       }
+    }
 
-      #controls button {
-        min-height: 3rem;
-      }
+    @media (orientation: landscape) and (max-height: 520px) {
+      #projection-shell { padding: 0.45rem 1.2rem; }
+      #hymn-number { font-size: clamp(1rem, 2.4vw, 1.7rem); }
+      #section-label { font-size: clamp(0.9rem, 1.8vw, 1.35rem); }
+      .lyric-line { font-size: clamp(1.45rem, 4.3vw, 3.1rem); }
+      #controls button { min-height: 2.9rem; }
     }
   </style>
 </head>
@@ -220,6 +255,15 @@
     <button id="exit-button" type="button">Exit</button>
   </div>
 
+  <div id="presentation-gate" aria-hidden="true">
+    <div class="gate-card">
+      <h1>Projector Mode</h1>
+      <p>Start full-screen wide projection.</p>
+      <p id="rotate-hint">Turn the phone sideways if it does not rotate automatically.</p>
+      <button id="start-presentation-button" type="button">START FULL SCREEN</button>
+    </div>
+  </div>
+
   <script>
     const STORAGE_KEY = 'church_projection_state';
     const params = new URLSearchParams(window.location.search);
@@ -233,6 +277,8 @@
     const blankButton = document.getElementById('blank-button');
     const nextButton = document.getElementById('next-button');
     const exitButton = document.getElementById('exit-button');
+    const presentationGate = document.getElementById('presentation-gate');
+    const startPresentationButton = document.getElementById('start-presentation-button');
 
     let projectorState = null;
     let controlsTimer = null;
@@ -255,9 +301,7 @@
       if (!projectorState) return;
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(projectorState));
-      } catch {
-        // Keep projection operational even if storage is unavailable.
-      }
+      } catch {}
     }
 
     function setWaitingState() {
@@ -279,7 +323,6 @@
       });
 
       mainContent.appendChild(container);
-      mainContent.scrollTop = 0;
     }
 
     function renderMobileState() {
@@ -309,12 +352,9 @@
     function moveSection(delta) {
       if (!projectorState || !Array.isArray(projectorState.sections)) return;
       const currentIndex = Number(projectorState.activeSectionIndex) || 0;
-      const nextIndex = Math.min(
-        Math.max(currentIndex + delta, 0),
-        projectorState.sections.length - 1
-      );
-
+      const nextIndex = Math.min(Math.max(currentIndex + delta, 0), projectorState.sections.length - 1);
       if (nextIndex === currentIndex) return;
+
       projectorState.activeSectionIndex = nextIndex;
       isBlank = false;
       document.body.classList.remove('is-blank');
@@ -330,7 +370,8 @@
     }
 
     function showControls() {
-      if (!isMobileMode) return;
+      if (!isMobileMode || presentationGate.classList.contains('visible')) return;
+
       controls.classList.add('visible');
       controls.setAttribute('aria-hidden', 'false');
 
@@ -339,19 +380,6 @@
         controls.classList.remove('visible');
         controls.setAttribute('aria-hidden', 'true');
       }, 3000);
-    }
-
-    function exitProjector() {
-      if (wakeLock) {
-        wakeLock.release().catch(() => {});
-        wakeLock = null;
-      }
-
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        window.location.assign('/');
-      }
     }
 
     async function requestWakeLock() {
@@ -363,10 +391,76 @@
       }
     }
 
+    async function enterWidePresentation() {
+      try {
+        if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
+          await document.documentElement.requestFullscreen({ navigationUI: 'hide' });
+        }
+      } catch {}
+
+      try {
+        if (screen.orientation && typeof screen.orientation.lock === 'function') {
+          await screen.orientation.lock('landscape');
+        }
+      } catch {}
+
+      presentationGate.classList.remove('visible');
+      presentationGate.setAttribute('aria-hidden', 'true');
+      requestWakeLock();
+    }
+
+    async function tryLandscapeLockWithoutGesture() {
+      try {
+        if (screen.orientation && typeof screen.orientation.lock === 'function') {
+          await screen.orientation.lock('landscape');
+        }
+      } catch {}
+    }
+
+    async function exitProjector() {
+      if (wakeLock) {
+        wakeLock.release().catch(() => {});
+        wakeLock = null;
+      }
+
+      try {
+        if (screen.orientation && typeof screen.orientation.unlock === 'function') {
+          screen.orientation.unlock();
+        }
+      } catch {}
+
+      try {
+        if (document.fullscreenElement && document.exitFullscreen) {
+          await document.exitFullscreen();
+        }
+      } catch {}
+
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.assign('/');
+      }
+    }
+
     if (isMobileMode) {
       loadStoredState();
       renderMobileState();
-      requestWakeLock();
+      tryLandscapeLockWithoutGesture();
+
+      const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+      const alreadyLandscape = window.matchMedia('(orientation: landscape)').matches;
+
+      if (standalone && alreadyLandscape) {
+        requestWakeLock();
+      } else {
+        presentationGate.classList.add('visible');
+        presentationGate.setAttribute('aria-hidden', 'false');
+      }
+
+      startPresentationButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        enterWidePresentation();
+      });
 
       previousButton.addEventListener('click', (event) => {
         event.stopPropagation();
@@ -391,7 +485,7 @@
       });
 
       document.addEventListener('click', (event) => {
-        if (!controls.contains(event.target)) showControls();
+        if (!controls.contains(event.target) && !presentationGate.contains(event.target)) showControls();
       });
 
       document.addEventListener('touchstart', (event) => {
@@ -401,7 +495,7 @@
       }, { passive: true });
 
       document.addEventListener('touchend', (event) => {
-        if (controls.contains(event.target)) return;
+        if (controls.contains(event.target) || presentationGate.contains(event.target)) return;
 
         const touch = event.changedTouches[0];
         const deltaX = touch.clientX - touchStartX;
@@ -434,9 +528,8 @@
       });
     } else {
       controls.style.display = 'none';
+      presentationGate.style.display = 'none';
 
-      // Show the most recently selected hymn immediately, then continue to
-      // receive live updates from the operator window on desktop systems.
       loadStoredState();
       if (projectorState) renderMobileState();
 
