@@ -8,6 +8,9 @@ interface HymnDisplayProps {
   onToggleQueue?: (hymn: HymnRecord) => void;
 }
 
+const cleanProjectionLine = (line: string) =>
+  line.replace(/名/g, ' me').replace(/[\u4e00-\u9fff]/g, '');
+
 export const HymnDisplay: React.FC<HymnDisplayProps> = ({
   hymn,
   isLoading,
@@ -21,27 +24,88 @@ export const HymnDisplay: React.FC<HymnDisplayProps> = ({
     setActiveSectionIndex(0);
   }, [hymn?.id]);
 
-  // Broadcast current slide to projector window in real-time
+  // If the user returns from the mobile projector page, restore the verse
+  // selected there without changing the rest of the operator interface.
   useEffect(() => {
-    if (!hymn || !hymn.sections) return;
+    const restoreProjectorSection = () => {
+      if (!hymn || !hymn.sections?.length) return;
 
-    const activeSection = hymn.sections[activeSectionIndex] || hymn.sections[0];
-    const cleanedLines = activeSection.lines.map((line) =>
-      line.replace(/名/g, ' me').replace(/[\u4e00-\u9fff]/g, '')
-    );
+      try {
+        const rawState = localStorage.getItem('church_projection_state');
+        if (!rawState) return;
 
-    const channel = new BroadcastChannel('church_projection');
-    channel.postMessage({
-      number: hymn.number,
-      title: hymn.title,
-      language: hymn.language_name,
-      label: `${activeSection.label || `Verse ${activeSection.number}`} (${activeSectionIndex + 1}/${hymn.sections.length})`,
-      lines: cleanedLines,
-    });
+        const savedState = JSON.parse(rawState);
+        if (savedState.hymnId !== hymn.id) return;
+
+        const savedIndex = Number(savedState.activeSectionIndex);
+        if (!Number.isInteger(savedIndex)) return;
+
+        const safeIndex = Math.min(
+          Math.max(savedIndex, 0),
+          hymn.sections.length - 1
+        );
+        setActiveSectionIndex(safeIndex);
+      } catch {
+        // Keep normal hymn operation working if local storage is unavailable.
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (!document.hidden) restoreProjectorSection();
+    };
+
+    window.addEventListener('pageshow', restoreProjectorSection);
+    window.addEventListener('focus', restoreProjectorSection);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
-      channel.close();
+      window.removeEventListener('pageshow', restoreProjectorSection);
+      window.removeEventListener('focus', restoreProjectorSection);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
+  }, [hymn]);
+
+  // Save the current hymn and all of its sections locally so a single mobile
+  // phone can enter Projector Mode without needing a second operator window.
+  // Continue broadcasting the active slide for existing dual-screen setups.
+  useEffect(() => {
+    if (!hymn || !hymn.sections?.length) return;
+
+    const activeSection = hymn.sections[activeSectionIndex] || hymn.sections[0];
+    const cleanedLines = activeSection.lines.map(cleanProjectionLine);
+
+    try {
+      localStorage.setItem(
+        'church_projection_state',
+        JSON.stringify({
+          version: 1,
+          hymnId: hymn.id,
+          number: hymn.number,
+          title: hymn.title,
+          language: hymn.language_name,
+          activeSectionIndex,
+          sections: hymn.sections.map((section) => ({
+            number: section.number,
+            label: section.label || `Verse ${section.number ?? ''}`.trim(),
+            lines: section.lines.map(cleanProjectionLine),
+          })),
+        })
+      );
+    } catch {
+      // Projection can still use BroadcastChannel on supported desktop setups.
+    }
+
+    if ('BroadcastChannel' in window) {
+      const channel = new BroadcastChannel('church_projection');
+      channel.postMessage({
+        number: hymn.number,
+        title: hymn.title,
+        language: hymn.language_name,
+        label: `${activeSection.label || `Verse ${activeSection.number}`} (${activeSectionIndex + 1}/${hymn.sections.length})`,
+        lines: cleanedLines,
+      });
+      channel.close();
+    }
   }, [hymn, activeSectionIndex]);
 
   // Keyboard navigation (Arrow Right / Space -> Next, Arrow Left -> Prev)
@@ -150,13 +214,9 @@ export const HymnDisplay: React.FC<HymnDisplayProps> = ({
         </div>
 
         <div className="space-y-2 text-lg md:text-xl font-serif leading-relaxed text-slate-100">
-          {activeSection.lines.map((line, lIdx) => {
-            const cleanedLine = line
-              .replace(/名/g, ' me')
-              .replace(/[\u4e00-\u9fff]/g, '');
-
-            return <p key={lIdx}>{cleanedLine}</p>;
-          })}
+          {activeSection.lines.map((line, lIdx) => (
+            <p key={lIdx}>{cleanProjectionLine(line)}</p>
+          ))}
         </div>
       </div>
     </div>
