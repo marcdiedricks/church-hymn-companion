@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hymn-companion-v2';
+const CACHE_NAME = 'hymn-companion-v3';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -19,7 +19,9 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.map((name) => caches.delete(name))
+        cacheNames
+          .filter((name) => name !== CACHE_NAME)
+          .map((name) => caches.delete(name))
       );
     })
   );
@@ -27,7 +29,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Network first for HTML/data, fallback to cache
+  // Network first for HTML/data, fallback to cache when connectivity is weak or absent.
   event.respondWith(
     fetch(event.request)
       .then((networkResponse) => {
@@ -44,4 +46,3 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
-
