@@ -310,6 +310,44 @@
       mainContent.innerHTML = '<div class="waiting-state">Waiting for hymn selection...</div>';
     }
 
+    let activeLinesContainer = null;
+
+    function fitLyricsToViewport(container) {
+      if (!container || !mainContent) return;
+
+      const lyricLines = Array.from(container.querySelectorAll('.lyric-line'));
+      if (lyricLines.length === 0) return;
+
+      lyricLines.forEach((line) => {
+        line.style.fontSize = '';
+        line.style.lineHeight = '';
+      });
+      container.style.gap = '';
+      mainContent.style.overflowY = 'hidden';
+
+      const availableHeight = Math.max(mainContent.clientHeight - 4, 1);
+      let fontSize = parseFloat(window.getComputedStyle(lyricLines[0]).fontSize) || 32;
+      const minimumFontSize = 12;
+
+      while (container.scrollHeight > availableHeight && fontSize > minimumFontSize) {
+        fontSize -= 1;
+        lyricLines.forEach((line) => {
+          line.style.fontSize = `${fontSize}px`;
+          if (fontSize <= 26) line.style.lineHeight = '1.04';
+        });
+        if (fontSize <= 26) container.style.gap = '0.15rem';
+      }
+
+      if (container.scrollHeight > availableHeight) {
+        mainContent.style.overflowY = 'auto';
+      }
+    }
+
+    function refitCurrentLyrics() {
+      if (!activeLinesContainer) return;
+      window.requestAnimationFrame(() => fitLyricsToViewport(activeLinesContainer));
+    }
+
     function setLines(lines) {
       mainContent.textContent = '';
       const container = document.createElement('div');
@@ -323,6 +361,8 @@
       });
 
       mainContent.appendChild(container);
+      activeLinesContainer = container;
+      refitCurrentLyrics();
     }
 
     function renderMobileState() {
@@ -522,6 +562,10 @@
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible' && !wakeLock) requestWakeLock();
       });
+
+      window.addEventListener('resize', refitCurrentLyrics);
+      window.addEventListener('orientationchange', refitCurrentLyrics);
+      document.addEventListener('fullscreenchange', refitCurrentLyrics);
 
       window.addEventListener('beforeunload', () => {
         if (wakeLock) wakeLock.release().catch(() => {});
