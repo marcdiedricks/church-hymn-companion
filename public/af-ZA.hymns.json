@@ -1875,6 +1875,15 @@
           ]
         },
         {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrein",
+          "lines": [
+            "Hoe groot, hoe goed is Hy, my Vreugde en my Krag,",
+            "Sy naam sal ek bely en vereer sy liefdesmag."
+          ]
+        },
+        {
           "type": "verse",
           "number": 2,
           "label": "Verse 2",
@@ -1885,16 +1894,16 @@
         },
         {
           "type": "refrain",
-          "number": 3,
+          "number": null,
           "label": "Refrein",
           "lines": [
             "Hoe groot, hoe goed is Hy, my Vreugde en my Krag,",
-            "Sy naam sal ek bely en vereer sy liefdesmag,"
+            "Sy naam sal ek bely en vereer sy liefdesmag."
           ]
         },
         {
           "type": "verse",
-          "number": 4,
+          "number": 3,
           "label": "Verse 3",
           "lines": [
             "O hoe heerlik eens met Hom te woon, o, te loop op hemelstrand!",
@@ -1903,12 +1912,11 @@
         },
         {
           "type": "refrain",
-          "number": 5,
+          "number": null,
           "label": "Refrein",
           "lines": [
             "Hoe groot, hoe goed is Hy, my Vreugde en my Krag,",
-            "Sy naam sal ek bely en vereer sy liefdesmag,",
-            "Sy liefdesmag."
+            "Sy naam sal ek bely en vereer sy liefdesmag, sy liefdesmag."
           ]
         }
       ],
