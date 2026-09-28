@@ -65,15 +65,31 @@ Audit focus:
 - state preservation
 - landscape fullscreen
 
+## Source-verified repairs completed from user-supplied text edition
+
+- English Hymn 90 ("I will never cease to love You"):
+  - removed the duplicated final `me.` from the refrain,
+  - normalized section numbering to Verse 1 → Refrain → Verse 2 → Refrain → Verse 3 → Refrain.
+- Afrikaans Hymn 59 ("Waarmee, Heer, kan ek U lowe?"):
+  - removed the duplicated final `eer.` from the refrain,
+  - normalized section numbering to Verse 1 → Refrein → Verse 2 → Refrein → Verse 3 → Refrein.
+- Afrikaans Hymn 72 ("Genade vir my"):
+  - removed the duplicated final `my.` from the refrain,
+  - normalized section numbering to Verse 1 → Refrein → Verse 2 → Refrein → Verse 3 → Refrein.
+- Afrikaans Hymn 121 ("Gods dade is volmaak"):
+  - removed the duplicated final `jare.` from the refrain,
+  - normalized section numbering to Verse 1 → Refrein → Verse 2 → Refrein → Verse 3 → Refrein.
+
+## Hymn 66 source note
+
+The user-supplied Afrikaans text edition omits Verse 2 and jumps from Verse 1 to Verse 3.
+An earlier official music-source image supplied by the user contains Verse 2 in full, and that verse has already been physically verified in the PWA.
+Therefore Verse 2 remains in the Gate 3 dataset. The text-edition omission is documented as a source discrepancy, not treated as evidence to delete the verse.
+
 ## Remaining unresolved integrity candidates
 
-Do not alter wording without authoritative source verification.
-
-- English Hymn 90: repeated-ending candidate retained for source verification.
-- Afrikaans Hymn 59 ("Waarmee, Heer, kan ek U lowe?"): stored refrain currently ends with duplicated `eer. eer.`
-- Afrikaans Hymn 72 ("Genade vir my"): stored refrain currently ends with duplicated `my. my.`
-- Afrikaans Hymn 121 ("Gods dade is volmaak"): stored refrain currently ends with duplicated `jare. jare.`
 - Other wording, punctuation and spacing candidates where intentional repetition cannot yet be ruled out.
+- No further wording changes should be made without authoritative source verification.
 
 ## Merge gate
 
