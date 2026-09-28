@@ -67,7 +67,7 @@
         },
         {
           "type": "refrain",
-          "number": 2,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "O praise Him! (x2)",
@@ -88,7 +88,7 @@
         },
         {
           "type": "refrain",
-          "number": 4,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "O praise Him! (x2)",
@@ -109,6 +109,15 @@
           ]
         },
         {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "O praise Him! (x2)",
+            "Alleluia! (x3)"
+          ]
+        },
+        {
           "type": "verse",
           "number": 6,
           "label": "Verse 4",
@@ -122,7 +131,7 @@
         },
         {
           "type": "refrain",
-          "number": 7,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "O praise Him! (x2)",
@@ -143,7 +152,7 @@
         },
         {
           "type": "refrain",
-          "number": 9,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "O praise Him! (x2)",
@@ -2659,7 +2668,7 @@
         },
         {
           "type": "refrain",
-          "number": 2,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "My heart overflows, my heart overflows with the love, the love He bestows.",
@@ -2677,7 +2686,7 @@
         },
         {
           "type": "refrain",
-          "number": 4,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "My heart overflows, my heart overflows with the love, the love He bestows.",
@@ -2695,7 +2704,7 @@
         },
         {
           "type": "refrain",
-          "number": 6,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "My heart overflows, my heart overflows with the love, the love He bestows.",
@@ -2710,6 +2719,15 @@
             "My heart overflows, and all who would believe, can come to His holy presence divine.",
             "Just open your heart, and He will impart the glorious joy that is mine.",
             "Rewfrain"
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "My heart overflows, my heart overflows with the love, the love He bestows.",
+            "With blessings complete, increasingly sweet, my heart with joy, with joy overflows."
           ]
         }
       ],
@@ -5197,19 +5215,19 @@
         },
         {
           "type": "refrain",
-          "number": 2,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "I will never cease to love You,",
             "Lord, my Saviour divine, yes, so divine.",
             "I will never cease to love You Lord, for I know I'm Yours and You are mine.",
             "O my Lord, through love You sent Your Son who gave His life to set me free,",
-            "yes, my gracious Lord who has done so much for me. me."
+            "yes, my gracious Lord who has done so much for me."
           ]
         },
         {
           "type": "verse",
-          "number": 3,
+          "number": 2,
           "label": "Verse 2",
           "lines": [
             "You give me strength for ev'ry day;",
@@ -5220,19 +5238,19 @@
         },
         {
           "type": "refrain",
-          "number": 4,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "I will never cease to love You,",
             "Lord, my Saviour divine, yes, so divine.",
             "I will never cease to love You Lord, for I know I'm Yours and You are mine.",
             "O my Lord, through love You sent Your Son who gave His life to set me free,",
-            "yes, my gracious Lord who has done so much for me. me."
+            "yes, my gracious Lord who has done so much for me."
           ]
         },
         {
           "type": "verse",
-          "number": 5,
+          "number": 3,
           "label": "Verse 3",
           "lines": [
             "While on my journey here below;",
@@ -5243,14 +5261,14 @@
         },
         {
           "type": "refrain",
-          "number": 6,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "I will never cease to love You,",
             "Lord, my Saviour divine, yes, so divine.",
             "I will never cease to love You Lord, for I know I'm Yours and You are mine.",
             "O my Lord, through love You sent Your Son who gave His life to set me free,",
-            "yes, my gracious Lord who has done so much for me. me."
+            "yes, my gracious Lord who has done so much for me."
           ]
         }
       ],
@@ -5278,7 +5296,7 @@
         },
         {
           "type": "refrain",
-          "number": 2,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "Sing, Oh, sing of my Redeemer. With His blood He purchased me.",
@@ -5296,7 +5314,7 @@
         },
         {
           "type": "refrain",
-          "number": 4,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "Sing, Oh, sing of my Redeemer. With His blood He purchased me.",
@@ -5314,7 +5332,7 @@
         },
         {
           "type": "refrain",
-          "number": 6,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "Sing, Oh, sing of my Redeemer. With His blood He purchased me.",
@@ -5328,6 +5346,15 @@
           "lines": [
             "I will sing of my Redeemer and His heav'nly love for me.",
             "He from death to life has brought me, Son of God, with Him to be."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "Sing, Oh, sing of my Redeemer. With His blood He purchased me.",
+            "On the cross He sealed my pardon, paid the debt, and made me  free."
           ]
         }
       ],
@@ -8160,7 +8187,7 @@
       "sections": [
         {
           "type": "refrain",
-          "number": 1,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "Lift high the cross, the love of Christ proclaim",
@@ -8178,7 +8205,7 @@
         },
         {
           "type": "refrain",
-          "number": 3,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "Lift high the cross, the love of Christ proclaim",
@@ -8196,7 +8223,7 @@
         },
         {
           "type": "refrain",
-          "number": 5,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "Lift high the cross, the love of Christ proclaim",
@@ -8214,7 +8241,7 @@
         },
         {
           "type": "refrain",
-          "number": 7,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "Lift high the cross, the love of Christ proclaim",
@@ -8229,6 +8256,15 @@
             "So shall our song of triumph ever be:",
             "We praise the Crucified for victory.",
             "Refain"
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "Lift high the cross, the love of Christ proclaim",
+            "till all the world adore His sacred name."
           ]
         }
       ],
@@ -8315,7 +8351,7 @@
         },
         {
           "type": "refrain",
-          "number": 2,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "O Master, grant that I may never seek so much to be consoled as to console,",
@@ -8333,7 +8369,7 @@
         },
         {
           "type": "refrain",
-          "number": 4,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "O Master, grant that I may never seek so much to be consoled as to console,",
@@ -8347,6 +8383,15 @@
           "lines": [
             "Make me a channel of Your peace. It is in pardoning that we are pardoned,",
             "in giving of ourselves that we receive, and in dying that we're born to eternal life."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "O Master, grant that I may never seek so much to be consoled as to console,",
+            "to be understood, as to understand, to be loved, as to love with all my soul."
           ]
         }
       ],
@@ -17348,7 +17393,7 @@
         },
         {
           "type": "refrain",
-          "number": 2,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "O Jesus invites you to come and make that fair city your home!",
@@ -17366,7 +17411,7 @@
         },
         {
           "type": "refrain",
-          "number": 4,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "O Jesus invites you to come and make that fair city your home!",
@@ -17380,6 +17425,15 @@
           "lines": [
             "The streets of that city are paved with pure gold; O, come and its riches survey!",
             "The Lord's masterbuilders with zeal, as of old, God's temple are building today."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "O Jesus invites you to come and make that fair city your home!",
+            "The way there for you is open once more, come share the blessed joy there in store!"
           ]
         }
       ],
@@ -21586,7 +21640,7 @@
         },
         {
           "type": "refrain",
-          "number": 2,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "Thou reconciled me with my God, Thou reconciled me with my God.",
@@ -21606,7 +21660,7 @@
         },
         {
           "type": "refrain",
-          "number": 4,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "Thou reconciled me with my God, Thou reconciled me with my God.",
@@ -21626,7 +21680,7 @@
         },
         {
           "type": "refrain",
-          "number": 6,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "Thou reconciled me with my God, Thou reconciled me with my God.",
@@ -21642,6 +21696,16 @@
             "I'm reconciled by mercy; Thou, Lamb, hast made me whole.",
             "To be with Thee I'm longing, O Bridegroom of my soul,",
             "to be with Thee I'm longing, O Bridegroom of my soul!"
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "Thou reconciled me with my God, Thou reconciled me with my God.",
+            "O precious Mediator, in need my Staff and Rod.",
+            "O precious Mediator, in need my Staff and Rod."
           ]
         }
       ],
@@ -24905,7 +24969,7 @@
         },
         {
           "type": "refrain",
-          "number": 2,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "\"Again, again the faithful shall behold Him!",
@@ -24927,7 +24991,7 @@
         },
         {
           "type": "refrain",
-          "number": 4,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "\"Again, again the faithful shall behold Him!",
@@ -24945,6 +25009,17 @@
             "lift up your eyes to greet your coming King.",
             "Rejoice, rejoice, no more be robed in sorrow,",
             "rejoice, O Zion, lift your voice and sing."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "\"Again, again the faithful shall behold Him!",
+            "Again, again enrobed in majesty;",
+            "in clouds of glory souls redeemed shall see Him.",
+            "Again, again the King of Glory see!"
           ]
         }
       ],
@@ -25546,14 +25621,34 @@
       "language": "en-ZA",
       "source_file": "414 My Lord! What a morning lyrics.txt",
       "metadata": {
-        "lyricist_author_translator": "1",
+        "lyricist_author_translator": "African-American spiritual",
         "composer": "African-American spiritual arr. John Rodriques (b. 1979)"
       },
       "sections": [
         {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "My Lord!",
+            "What a morning; my Lord!",
+            "What a morning;",
+            "O my Lord!",
+            "What a morning when the stars begin to fall."
+          ]
+        },
+        {
           "type": "verse",
           "number": 1,
           "label": "Verse 1",
+          "lines": [
+            "You'll hear the trumpet sound to wake the nations underground, looking to my God's right hand when the stars begin to fall."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
           "lines": [
             "My Lord!",
             "What a morning; my Lord!",
@@ -25565,25 +25660,41 @@
         {
           "type": "verse",
           "number": 2,
-          "label": "Verse 1",
+          "label": "Verse 2",
           "lines": [
-            "You'll hear the trumpet sound nations underground, looking to my God's right hand when the stars begin to fall."
+            "You'll hear the sinner cry to wake the nations underground, looking to my God's right hand when the stars begin to fall."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "My Lord!",
+            "What a morning; my Lord!",
+            "What a morning;",
+            "O my Lord!",
+            "What a morning when the stars begin to fall."
           ]
         },
         {
           "type": "verse",
           "number": 3,
-          "label": "Verse 2",
+          "label": "Verse 3",
           "lines": [
-            "You'll hear the sinner cry to wake the"
+            "You'll hear the Christian shout to wake the nations underground, looking to my God's right hand when the stars begin to fall."
           ]
         },
         {
-          "type": "verse",
-          "number": 4,
-          "label": "Verse 3",
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
           "lines": [
-            "You'll hear the Christian shout"
+            "My Lord!",
+            "What a morning; my Lord!",
+            "What a morning;",
+            "O my Lord!",
+            "What a morning when the stars begin to fall."
           ]
         }
       ],
@@ -26207,14 +26318,14 @@
       "language": "en-ZA",
       "source_file": "423 Steal away lyrics.txt",
       "metadata": {
-        "lyricist_author_translator": "1",
+        "lyricist_author_translator": "African-American spiritual",
         "composer": "African-American spiritual arr. John Rodriques (b. 1979)"
       },
       "sections": [
         {
-          "type": "verse",
-          "number": 1,
-          "label": "Verse 1",
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
           "lines": [
             "Steal away, steal away, steal away to Jesus!",
             "Steal away, steal away home,",
@@ -26223,7 +26334,7 @@
         },
         {
           "type": "verse",
-          "number": 2,
+          "number": 1,
           "label": "Verse 1",
           "lines": [
             "My Lord,",
@@ -26233,21 +26344,53 @@
           ]
         },
         {
-          "type": "verse",
-          "number": 3,
-          "label": "Verse 2",
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
           "lines": [
-            "Green trees are bending, poor sinners stand a trembling; the"
+            "Steal away, steal away, steal away to Jesus!",
+            "Steal away, steal away home,",
+            "I ain't got long to stay here."
           ]
         },
         {
           "type": "verse",
-          "number": 4,
+          "number": 2,
+          "label": "Verse 2",
+          "lines": [
+            "Green trees are bending, poor sinners stand a trembling; the trumpet sounds within my soul;",
+            "I ain't got long to stay here."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "Steal away, steal away, steal away to Jesus!",
+            "Steal away, steal away home,",
+            "I ain't got long to stay here."
+          ]
+        },
+        {
+          "type": "verse",
+          "number": 3,
           "label": "Verse 3",
           "lines": [
             "My Lord,",
             "He calls me,",
-            "He calls me by the lightning; the"
+            "He calls me by the lightning; the trumpet sounds within my soul;",
+            "I ain't got long to stay here."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "Steal away, steal away, steal away to Jesus!",
+            "Steal away, steal away home,",
+            "I ain't got long to stay here."
           ]
         }
       ],
