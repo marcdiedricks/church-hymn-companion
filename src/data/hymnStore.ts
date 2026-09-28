@@ -21,7 +21,7 @@ const moveTrailingMetadata = (
 const applySafeStructuralRepairs = (pack: HymnPack, language: SupportedLanguage) => {
   const metadataMoves: Record<SupportedLanguage, Array<[number, number, number]>> = {
     'en-ZA': [[5, 3, 1], [38, 1, 1], [104, 3, 2], [179, 3, 3], [509, 5, 2]],
-    'af-ZA': [[26, 2, 1], [29, 4, 1], [31, 3, 1], [98, 3, 1], [100, 4, 1], [159, 3, 1], [211, 3, 1], [307, 4, 1]],
+    'af-ZA': [[26, 2, 1], [29, 5, 1], [31, 3, 1], [98, 3, 1], [100, 5, 1], [159, 3, 1], [211, 3, 1], [307, 5, 1]],
   };
 
   metadataMoves[language].forEach(([hymnNumber, sectionOneBased, lineCount]) => {
