@@ -91,6 +91,37 @@ Therefore Verse 2 remains in the Gate 3 dataset. The text-edition omission is do
 - Other wording, punctuation and spacing candidates where intentional repetition cannot yet be ruled out.
 - No further wording changes should be made without authoritative source verification.
 
+## Gate 3 closeout audit — 2026-09-28
+
+Closeout verification completed against the current Gate 3 branch.
+
+Confirmed:
+- 588 English hymns and 315 Afrikaans hymns.
+- No missing hymn numbers.
+- No duplicate hymn numbers.
+- No duplicate hymn IDs.
+- `src/data` and `public` hymn datasets match for both languages.
+- Runtime display scan: no empty sections remain visible.
+- Runtime display scan: no known publishing/copyright metadata remains inside lyric display.
+- All English refrain labels are `Refrain`.
+- All Afrikaans refrain labels are `Refrein`.
+- English Hymn 90 physically verified PASS.
+- Afrikaans Hymn 59 physically verified PASS.
+- Afrikaans Hymn 72 physically verified PASS.
+- Afrikaans Hymn 121 physically verified PASS.
+- Netlify PR #2 deploy preview is green on the current branch head.
+
+Additional closeout repair:
+- Afrikaans Hymns 29, 100 and 307 still exposed publishing metadata at runtime because broad refrain normalization shifted section positions.
+- The metadata cleanup references were corrected to the new section positions.
+- A full runtime re-scan confirms no known publishing/copyright metadata remains visible in lyric sections.
+
+Remaining source-dependent exception:
+- Afrikaans Hymn 30 ("Ware vreugde gee die Heer") has the stored sequence:
+  Verse 1 → Verse 2 → Refrein → Verse 3 → Refrein.
+- This may be intentional and must not be normalized without authoritative source verification.
+- Gate 3 should remain open until Hymn 30 is verified or explicitly accepted as an intentional exception.
+
 ## Merge gate
 
 Do not merge to `main` and do not deploy to production until:
