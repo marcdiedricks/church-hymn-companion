@@ -25551,9 +25551,29 @@
       },
       "sections": [
         {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "My Lord!",
+            "What a morning; my Lord!",
+            "What a morning;",
+            "O my Lord!",
+            "What a morning when the stars begin to fall."
+          ]
+        },
+        {
           "type": "verse",
           "number": 1,
           "label": "Verse 1",
+          "lines": [
+            "You'll hear the trumpet sound to wake the nations underground, looking to my God's right hand when the stars begin to fall."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
           "lines": [
             "My Lord!",
             "What a morning; my Lord!",
@@ -25565,25 +25585,41 @@
         {
           "type": "verse",
           "number": 2,
-          "label": "Verse 1",
+          "label": "Verse 2",
           "lines": [
-            "You'll hear the trumpet sound nations underground, looking to my God's right hand when the stars begin to fall."
+            "You'll hear the sinner cry to wake the nations underground, looking to my God's right hand when the stars begin to fall."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "My Lord!",
+            "What a morning; my Lord!",
+            "What a morning;",
+            "O my Lord!",
+            "What a morning when the stars begin to fall."
           ]
         },
         {
           "type": "verse",
           "number": 3,
-          "label": "Verse 2",
+          "label": "Verse 3",
           "lines": [
-            "You'll hear the sinner cry to wake the"
+            "You'll hear the Christian shout to wake the nations underground, looking to my God's right hand when the stars begin to fall."
           ]
         },
         {
-          "type": "verse",
-          "number": 4,
-          "label": "Verse 3",
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
           "lines": [
-            "You'll hear the Christian shout"
+            "My Lord!",
+            "What a morning; my Lord!",
+            "What a morning;",
+            "O my Lord!",
+            "What a morning when the stars begin to fall."
           ]
         }
       ],
@@ -26212,9 +26248,9 @@
       },
       "sections": [
         {
-          "type": "verse",
-          "number": 1,
-          "label": "Verse 1",
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
           "lines": [
             "Steal away, steal away, steal away to Jesus!",
             "Steal away, steal away home,",
@@ -26223,7 +26259,7 @@
         },
         {
           "type": "verse",
-          "number": 2,
+          "number": 1,
           "label": "Verse 1",
           "lines": [
             "My Lord,",
@@ -26233,21 +26269,53 @@
           ]
         },
         {
-          "type": "verse",
-          "number": 3,
-          "label": "Verse 2",
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
           "lines": [
-            "Green trees are bending, poor sinners stand a trembling; the"
+            "Steal away, steal away, steal away to Jesus!",
+            "Steal away, steal away home,",
+            "I ain't got long to stay here."
           ]
         },
         {
           "type": "verse",
-          "number": 4,
+          "number": 2,
+          "label": "Verse 2",
+          "lines": [
+            "Green trees are bending, poor sinners stand a trembling; the trumpet sounds within my soul;",
+            "I ain't got long to stay here."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "Steal away, steal away, steal away to Jesus!",
+            "Steal away, steal away home,",
+            "I ain't got long to stay here."
+          ]
+        },
+        {
+          "type": "verse",
+          "number": 3,
           "label": "Verse 3",
           "lines": [
             "My Lord,",
             "He calls me,",
-            "He calls me by the lightning; the"
+            "He calls me by the lightning; the trumpet sounds within my soul;",
+            "I ain't got long to stay here."
+          ]
+        },
+        {
+          "type": "refrain",
+          "number": null,
+          "label": "Refrain",
+          "lines": [
+            "Steal away, steal away, steal away to Jesus!",
+            "Steal away, steal away home,",
+            "I ain't got long to stay here."
           ]
         }
       ],
