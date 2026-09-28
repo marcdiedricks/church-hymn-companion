@@ -1,9 +1,9 @@
-const CACHE_NAME = 'hymn-companion-v3';
+const CACHE_NAME = 'hymn-companion-v4';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/projector.html'
+  '/projector.html',\n  '/hc-icon.svg'
 ];
 
 self.addEventListener('install', (event) => {

@@ -1,21 +1,25 @@
 {
   "short_name": "HymnCompanion",
   "name": "Church Hymn Companion",
-  "icons": [
-    {
-      "src": "pwa-192x192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "pwa-512x512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
+  "id": "/",
   "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
   "background_color": "#020617",
   "theme_color": "#020617",
-  "display": "standalone",
-  "orientation": "any"
+  "icons": [
+    {
+      "src": "/hc-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/hc-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "maskable"
+    }
+  ]
 }
