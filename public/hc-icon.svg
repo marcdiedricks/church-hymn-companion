@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Church Hymn Companion">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08264a"/>
+      <stop offset="1" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0.15" y1="0.05" x2="0.75" y2="1">
+      <stop offset="0" stop-color="#ffe16b"/>
+      <stop offset="0.48" stop-color="#ffb21f"/>
+      <stop offset="1" stop-color="#e8790b"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="92" fill="url(#bg)"/>
+
+  <!-- H -->
+  <path d="M92 112 H160 V222 H245 V112 H313 V366 H245 V283 H160 V366 H92 Z"
+        fill="url(#gold)"/>
+
+  <!-- Cross integrated through upper H -->
+  <g filter="url(#glow)" fill="url(#gold)">
+    <rect x="227" y="69" width="28" height="112" rx="5"/>
+    <rect x="191" y="104" width="100" height="28" rx="5"/>
+  </g>
+
+  <!-- C -->
+  <path d="M420 160
+           C394 130 357 114 318 114
+           C241 114 196 170 196 241
+           C196 318 244 376 321 376
+           C366 376 404 356 430 324
+           L388 286
+           C371 306 349 317 324 317
+           C283 317 257 287 257 243
+           C257 201 284 172 324 172
+           C349 172 369 181 386 199 Z"
+        fill="url(#gold)"/>
+
+  <!-- Digital congregation / screen cue: clean underline arcs, not a book -->
+  <path d="M105 401 Q256 360 407 401" fill="none" stroke="#fff7df" stroke-width="18" stroke-linecap="round"/>
+  <path d="M118 427 Q256 390 394 427" fill="none" stroke="url(#gold)" stroke-width="13" stroke-linecap="round"/>
+</svg>
