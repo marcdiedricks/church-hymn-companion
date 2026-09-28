@@ -5215,19 +5215,19 @@
         },
         {
           "type": "refrain",
-          "number": 2,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "I will never cease to love You,",
             "Lord, my Saviour divine, yes, so divine.",
             "I will never cease to love You Lord, for I know I'm Yours and You are mine.",
             "O my Lord, through love You sent Your Son who gave His life to set me free,",
-            "yes, my gracious Lord who has done so much for me. me."
+            "yes, my gracious Lord who has done so much for me."
           ]
         },
         {
           "type": "verse",
-          "number": 3,
+          "number": 2,
           "label": "Verse 2",
           "lines": [
             "You give me strength for ev'ry day;",
@@ -5238,19 +5238,19 @@
         },
         {
           "type": "refrain",
-          "number": 4,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "I will never cease to love You,",
             "Lord, my Saviour divine, yes, so divine.",
             "I will never cease to love You Lord, for I know I'm Yours and You are mine.",
             "O my Lord, through love You sent Your Son who gave His life to set me free,",
-            "yes, my gracious Lord who has done so much for me. me."
+            "yes, my gracious Lord who has done so much for me."
           ]
         },
         {
           "type": "verse",
-          "number": 5,
+          "number": 3,
           "label": "Verse 3",
           "lines": [
             "While on my journey here below;",
@@ -5261,14 +5261,14 @@
         },
         {
           "type": "refrain",
-          "number": 6,
+          "number": null,
           "label": "Refrain",
           "lines": [
             "I will never cease to love You,",
             "Lord, my Saviour divine, yes, so divine.",
             "I will never cease to love You Lord, for I know I'm Yours and You are mine.",
             "O my Lord, through love You sent Your Son who gave His life to set me free,",
-            "yes, my gracious Lord who has done so much for me. me."
+            "yes, my gracious Lord who has done so much for me."
           ]
         }
       ],
