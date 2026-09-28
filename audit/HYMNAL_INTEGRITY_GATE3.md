@@ -116,16 +116,17 @@ Additional closeout repair:
 - The metadata cleanup references were corrected to the new section positions.
 - A full runtime re-scan confirms no known publishing/copyright metadata remains visible in lyric sections.
 
-Remaining source-dependent exception:
-- Afrikaans Hymn 30 ("Ware vreugde gee die Heer") has the stored sequence:
-  Verse 1 → Verse 2 → Refrein → Verse 3 → Refrein.
-- This may be intentional and must not be normalized without authoritative source verification.
-- Gate 3 should remain open until Hymn 30 is verified or explicitly accepted as an intentional exception.
+Final source-dependent exception resolved:
+- Afrikaans Hymn 30 ("Ware vreugde gee die Heer") verified from the official text edition supplied by the user.
+- Correct sequence:
+  Verse 1 → Refrein → Verse 2 → Refrein → Verse 3 → Refrein.
+- The Verse 3 refrain intentionally ends with the repeated phrase:
+  `Sy naam sal ek bely en vereer sy liefdesmag, sy liefdesmag.`
+- Both `src/data` and `public` Afrikaans datasets were repaired to match the authoritative source.
 
 ## Merge gate
 
 Do not merge to `main` and do not deploy to production until:
-1. remaining source-dependent integrity candidates are resolved or explicitly deferred,
-2. Gate 3 checks remain green,
-3. Marc physically verifies the preview,
-4. Marc gives explicit approval to merge/deploy.
+1. Gate 3 checks remain green,
+2. Marc physically verifies the latest preview,
+3. Marc gives explicit approval to merge/deploy.
