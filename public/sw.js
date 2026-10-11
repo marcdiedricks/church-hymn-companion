@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hymn-companion-v5';
+const CACHE_NAME = 'hymn-companion-v6';
 
 const CORE_ASSETS = [
   '/',
@@ -92,18 +92,30 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(request.url);
 
-  // Home-screen launches and browser navigations must always have a cached shell fallback.
+  // Home-screen launches and projector navigations each need their own cached fallback.
   if (request.mode === 'navigate') {
     event.respondWith((async () => {
+      const isProjectorRoute = url.pathname === '/projector.html';
+
       try {
         const networkResponse = await fetch(request);
         if (networkResponse && networkResponse.ok) {
           const cache = await caches.open(CACHE_NAME);
-          cache.put('/', networkResponse.clone());
-          cache.put('/index.html', networkResponse.clone());
+
+          if (isProjectorRoute) {
+            // Keep projector navigation isolated from the main app shell cache.
+            await cache.put('/projector.html', networkResponse.clone());
+          } else {
+            await cache.put('/', networkResponse.clone());
+            await cache.put('/index.html', networkResponse.clone());
+          }
         }
         return networkResponse;
       } catch {
+        if (isProjectorRoute) {
+          return (await caches.match('/projector.html')) || Response.error();
+        }
+
         return (await caches.match(request)) ||
           (await caches.match('/')) ||
           (await caches.match('/index.html')) ||
