@@ -10,15 +10,15 @@
   "theme_color": "#020617",
   "icons": [
     {
-      "src": "/hc-icon.svg",
-      "type": "image/svg+xml",
-      "sizes": "any",
+      "src": "/hc-icon-premium-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
       "purpose": "any"
     },
     {
-      "src": "/hc-icon.svg",
-      "type": "image/svg+xml",
-      "sizes": "any",
+      "src": "/hc-icon-premium-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
       "purpose": "maskable"
     }
   ]
