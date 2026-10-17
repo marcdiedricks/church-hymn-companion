@@ -6,6 +6,8 @@ const CORE_ASSETS = [
   '/manifest.json',
   '/projector.html',
   '/hc-icon.svg',
+  '/hc-approved-192.png',
+  '/hc-approved-512.png',
   '/hc-approved-192.jpg',
   '/hc-approved-512.jpg',
   '/creator-card-qr.svg',
