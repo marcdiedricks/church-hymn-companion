@@ -10,15 +10,21 @@
   "theme_color": "#020617",
   "icons": [
     {
-      "src": "/hc-approved-icon.svg",
-      "type": "image/svg+xml",
-      "sizes": "any",
+      "src": "/hc-approved-192.jpg",
+      "type": "image/jpeg",
+      "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "/hc-approved-icon.svg",
-      "type": "image/svg+xml",
-      "sizes": "any",
+      "src": "/hc-approved-512.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/hc-approved-512.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512",
       "purpose": "maskable"
     }
   ]
