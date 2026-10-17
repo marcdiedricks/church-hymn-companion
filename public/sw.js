@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hymn-companion-v8';
+const CACHE_NAME = 'hymn-companion-v9';
 
 const CORE_ASSETS = [
   '/',
@@ -6,8 +6,7 @@ const CORE_ASSETS = [
   '/manifest.json',
   '/projector.html',
   '/hc-icon.svg',
-  '/hc-icon-premium-512.png',
-  '/hc-icon-premium-192.png',
+  '/hc-approved-icon.svg',
   '/creator-card-qr.svg',
   '/en-ZA.hymns.json',
   '/af-ZA.hymns.json'
