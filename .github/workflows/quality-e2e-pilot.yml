@@ -14,9 +14,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: npm
       - name: Install existing app dependencies
-        run: npm ci
+        run: npm install --no-package-lock
       - name: Install Playwright test runner without changing lockfile
         run: npm install --no-save --package-lock=false @playwright/test
       - name: Install Chromium
